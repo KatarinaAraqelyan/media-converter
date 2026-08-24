@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ConversionManager/ConversionManager.csproj" />
+  <Project Path="MockConverter/MockConverter.csproj" />
 </Solution>

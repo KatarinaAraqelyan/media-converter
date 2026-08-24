@@ -22,4 +22,5 @@ public class Job
         Status = JobStatus.Queued;
         Progress = 0;
     }
+    public override string ToString() => $"Job {ShortId} [{Status}] {Progress}% — {Input} → {Output}";
 }

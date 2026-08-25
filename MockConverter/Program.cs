@@ -55,7 +55,7 @@ class Program
                 }
             }
 
-            Thread.Sleep(800);
+            Thread.Sleep(4000);
             progress += 10;
         }
 

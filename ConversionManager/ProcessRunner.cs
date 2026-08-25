@@ -6,9 +6,28 @@ public class ProcessRunner : IWorkerRunner
 {
     public void Run(Job job, CancellationToken token)
     {
+        
+        string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+        string configuration = "Debug";
+        string framework = "net10.0";
+
+        string path = Path.GetFullPath(Path.Combine(
+            baseDir,
+            "..", "..", "..", "..",
+            "MockConverter",
+            "bin",
+            configuration,
+            framework,
+            "MockConverter"
+        ));
+
+        if (OperatingSystem.IsWindows())
+        {
+            path += ".exe";
+        }
         var startInfo = new ProcessStartInfo
         {
-            FileName = "/Users/katharinaaraqelyan/Desktop/media-converter/MockConverter/bin/Debug/net10.0/MockConverter",
+            FileName = path,
             Arguments = $"--input \"{job.Input}\" --output \"{job.Output}\" --options \"{job.Options}\"",
             UseShellExecute = false,       
             RedirectStandardOutput = true,  

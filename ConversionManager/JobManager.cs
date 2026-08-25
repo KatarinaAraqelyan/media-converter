@@ -71,8 +71,7 @@ public class JobManager : IJobManager
 
                 lock (_lock)
                 {
-                    job.Status = JobStatus.Completed;
-                    Monitor.Pulse(_lock);
+                    Monitor.PulseAll(_lock);
 
                 }
             }
@@ -81,7 +80,7 @@ public class JobManager : IJobManager
                 lock (_lock)
                 {
                     job.Status = JobStatus.Canceled;
-                    Monitor.Pulse(_lock);
+                    Monitor.PulseAll(_lock);
 
                 }
             }
@@ -90,7 +89,7 @@ public class JobManager : IJobManager
                 lock (_lock)
                 {
                     job.Status = JobStatus.Failed;
-                    Monitor.Pulse(_lock);
+                    Monitor.PulseAll(_lock);
 
                 }
             }
